@@ -14,20 +14,20 @@ jspm_packages/
 # Compiler outputs
 dist/
 tmp/
+.tmp/
 out/
 
-# IDEs and editors
+# IDEs, editors and system files
 .idea/
 .vscode/
+.gemini/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-
-# Operating System Files
+.DS_Store
 Thumbs.db
 Ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
-.DS_Store
