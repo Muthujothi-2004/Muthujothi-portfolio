@@ -38,10 +38,11 @@ const experienceData: ExperienceItem[] = [
     period: 'May 2024 – Jan 2025',
     type: 'Internship',
     bullets: [
-      'Built responsive web pages using HTML, CSS, JavaScript, and React.js.',
+      'Built responsive web application interfaces using Next.js, TypeScript, React.js',
+      'Developed and maintained UI components for company web projects in a collaborative development environment.',
       'Integrated third-party and internal APIs to support frontend feature development.',
-      'Participated in real-time project development workflows using version control (Git/GitHub).',
-      'Gained hands-on experience in the full web application development lifecycle.',
+      'Participated in real-time project development workflows using Git and GitHub for version control.',
+      'Gained hands-on experience in the complete web application development lifecycle.',
     ],
   },
 ]
@@ -49,7 +50,7 @@ const experienceData: ExperienceItem[] = [
 const educationData: EducationItem[] = [
   {
     degree: 'Software Development Training',
-    period: '2022 – 2024',
+    period: '2024 – 2025',
     school: 'Freshworks Software Academy',
   },
   {
@@ -93,7 +94,7 @@ export default function Resume() {
   return (
     <section className="bg-brand-offset py-[100px] border-t border-b border-gray-200 relative" id="resume">
       <div className="w-[90%] max-w-[1200px] mx-auto print:max-w-full print:w-full print:mx-0 print:p-0">
-        
+
         {/* Section Header (Hidden in Print) */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-[60px] gap-6 print:hidden">
           <div className="text-center md:text-left">
@@ -104,7 +105,7 @@ export default function Resume() {
               My Resume & Journey
             </h2>
           </div>
-          
+
           <button
             onClick={handlePrint}
             className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-brand-dark text-white font-head font-bold text-sm rounded-full transition-all duration-300 hover:bg-brand-accent1 hover:scale-105 shadow-sm"
@@ -125,36 +126,33 @@ export default function Resume() {
 
         {/* --- WEB-ONLY INTERACTIVE LAYOUT --- */}
         <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-[40px] lg:gap-[60px] items-start print:hidden">
-          
+
           {/* Tabs Navigation */}
           <div className="flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible gap-2 border-b border-gray-200 lg:border-b-0 pb-3 lg:pb-0 scrollbar-none">
             <button
               onClick={() => setActiveTab('experience')}
-              className={`flex-1 lg:flex-initial text-left px-5 py-4 font-head font-bold text-[0.95rem] tracking-tight rounded-xl transition-all whitespace-nowrap ${
-                activeTab === 'experience'
-                  ? 'bg-white border-l-[3px] border-brand-accent2 text-brand-dark shadow-sm'
-                  : 'text-gray-400 hover:text-brand-dark hover:bg-white/50'
-              }`}
+              className={`flex-1 lg:flex-initial text-left px-5 py-4 font-head font-bold text-[0.95rem] tracking-tight rounded-xl transition-all whitespace-nowrap ${activeTab === 'experience'
+                ? 'bg-white border-l-[3px] border-brand-accent2 text-brand-dark shadow-sm'
+                : 'text-gray-400 hover:text-brand-dark hover:bg-white/50'
+                }`}
             >
               Work Experience
             </button>
             <button
               onClick={() => setActiveTab('education')}
-              className={`flex-1 lg:flex-initial text-left px-5 py-4 font-head font-bold text-[0.95rem] tracking-tight rounded-xl transition-all whitespace-nowrap ${
-                activeTab === 'education'
-                  ? 'bg-white border-l-[3px] border-brand-accent2 text-brand-dark shadow-sm'
-                  : 'text-gray-400 hover:text-brand-dark hover:bg-white/50'
-              }`}
+              className={`flex-1 lg:flex-initial text-left px-5 py-4 font-head font-bold text-[0.95rem] tracking-tight rounded-xl transition-all whitespace-nowrap ${activeTab === 'education'
+                ? 'bg-white border-l-[3px] border-brand-accent2 text-brand-dark shadow-sm'
+                : 'text-gray-400 hover:text-brand-dark hover:bg-white/50'
+                }`}
             >
               Education
             </button>
             <button
               onClick={() => setActiveTab('skills')}
-              className={`flex-1 lg:flex-initial text-left px-5 py-4 font-head font-bold text-[0.95rem] tracking-tight rounded-xl transition-all whitespace-nowrap ${
-                activeTab === 'skills'
-                  ? 'bg-white border-l-[3px] border-brand-accent2 text-brand-dark shadow-sm'
-                  : 'text-gray-400 hover:text-brand-dark hover:bg-white/50'
-              }`}
+              className={`flex-1 lg:flex-initial text-left px-5 py-4 font-head font-bold text-[0.95rem] tracking-tight rounded-xl transition-all whitespace-nowrap ${activeTab === 'skills'
+                ? 'bg-white border-l-[3px] border-brand-accent2 text-brand-dark shadow-sm'
+                : 'text-gray-400 hover:text-brand-dark hover:bg-white/50'
+                }`}
             >
               Tech Skills & Languages
             </button>
@@ -162,7 +160,7 @@ export default function Resume() {
 
           {/* Active Tab Content Panel */}
           <div className="bg-white p-8 sm:p-10 rounded-[20px] border border-gray-100 shadow-sm min-h-[400px]">
-            
+
             {/* Experience Panel */}
             {activeTab === 'experience' && (
               <div className="flex flex-col gap-10">
@@ -170,7 +168,7 @@ export default function Resume() {
                   <div key={idx} className="relative pl-8 border-l-2 border-gray-150 last:pb-0 pb-4">
                     {/* Timeline Dot */}
                     <div className="absolute left-[-9px] top-[5px] w-4 h-4 rounded-full border-[3px] border-brand-accent2 bg-white" />
-                    
+
                     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-4">
                       <div>
                         <span className="inline-block px-3 py-1 bg-brand-accent2/10 text-brand-accent2 text-xs font-bold font-head rounded-full mb-1">
@@ -273,7 +271,7 @@ export default function Resume() {
         {/* --- PRINT-ONLY/PDF STANDARD RESUME SHEET --- */}
         {/* This layout is strictly styled for standard letter/A4 printing using the `@media print` directives in index.css. It is hidden on the web interface. */}
         <div className="hidden print:block print:bg-white print:text-black font-serif text-[11pt] leading-[1.3] print:p-0">
-          
+
           {/* Resume Header */}
           <div className="text-center border-b-[1.5px] border-black pb-3 mb-4">
             <h1 className="font-head text-3xl font-extrabold tracking-tight text-black mb-1 uppercase">
@@ -323,7 +321,7 @@ export default function Resume() {
             <h2 className="font-head text-[11pt] font-extrabold tracking-wider border-b border-black/30 pb-0.5 mb-2 uppercase text-black">
               Professional Experience
             </h2>
-            
+
             <div className="mb-3">
               <div className="flex justify-between items-baseline font-body font-bold text-[10pt] text-black">
                 <span>Software Development Engineer &ndash; Shabd Company</span>

@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
+import { useForm, ValidationError } from '@formspree/react'
 
 interface FormData {
   name: string
@@ -10,22 +11,31 @@ interface FormData {
 export default function ContactCTA() {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
   const [formData, setFormData] = useState<FormData>({ name: '', email: '', message: '' })
-  const [submitted, setSubmitted] = useState<boolean>(false)
+  const [state, handleSubmit, reset] = useForm('xwvzwlov')
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setSubmitted(true)
-    setTimeout(() => {
-      setFormData({ name: '', email: '', message: '' })
-      setSubmitted(false)
-      setModalOpen(false)
-    }, 2000)
-  }
+  // Reset Formspree state when the modal closes
+  useEffect(() => {
+    if (!modalOpen) {
+      reset()
+    }
+  }, [modalOpen, reset])
+
+  // Automatically close modal and reset form after successful submission
+  useEffect(() => {
+    if (state.succeeded) {
+      const timer = setTimeout(() => {
+        setFormData({ name: '', email: '', message: '' })
+        setModalOpen(false)
+        reset()
+      }, 3000)
+      return () => clearTimeout(timer)
+    }
+  }, [state.succeeded, reset])
 
   return (
     <section className="bg-brand-dark py-[120px] overflow-hidden border-b border-brand-darkoffset relative" id="contact">
@@ -82,7 +92,7 @@ export default function ContactCTA() {
               </a>
             </p>
 
-            {submitted ? (
+            {state.succeeded ? (
               <div className="flex flex-col items-center justify-center py-10 text-center">
                 <div className="w-[50px] h-[50px] rounded-full bg-[#22c55e] text-white text-3xl font-bold flex items-center justify-center mb-5 shadow-[0_4px_15px_rgba(34,197,94,0.2)]">
                   ✓
@@ -107,6 +117,7 @@ export default function ContactCTA() {
                     placeholder="e.g. John Doe"
                     className="w-full px-4 py-3 rounded-lg border border-gray-200 font-body text-[0.95rem] text-brand-dark bg-brand-offset focus:outline-none focus:border-brand-accent1 focus:bg-white transition-all"
                   />
+                  <ValidationError prefix="Name" field="name" errors={state.errors} className="text-red-500 text-xs font-semibold mt-1" />
                 </div>
 
                 <div className="flex flex-col gap-2">
@@ -123,6 +134,7 @@ export default function ContactCTA() {
                     placeholder="e.g. john@example.com"
                     className="w-full px-4 py-3 rounded-lg border border-gray-200 font-body text-[0.95rem] text-brand-dark bg-brand-offset focus:outline-none focus:border-brand-accent1 focus:bg-white transition-all"
                   />
+                  <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-500 text-xs font-semibold mt-1" />
                 </div>
 
                 <div className="flex flex-col gap-2">
@@ -139,13 +151,15 @@ export default function ContactCTA() {
                     placeholder="How can I help your team? Send me a message..."
                     className="w-full px-4 py-3 rounded-lg border border-gray-200 font-body text-[0.95rem] text-brand-dark bg-brand-offset focus:outline-none focus:border-brand-accent1 focus:bg-white transition-all resize-none"
                   ></textarea>
+                  <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-500 text-xs font-semibold mt-1" />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full mt-2.5 inline-flex items-center justify-center px-8 py-3.5 bg-brand-dark text-white font-head font-semibold rounded-full shadow-[0_4px_15px_rgba(10,10,13,0.15)] transition-transform duration-300 hover:scale-105 hover:bg-brand-accent1"
+                  disabled={state.submitting}
+                  className="w-full mt-2.5 inline-flex items-center justify-center px-8 py-3.5 bg-brand-dark text-white font-head font-semibold rounded-full shadow-[0_4px_15px_rgba(10,10,13,0.15)] transition-transform duration-300 hover:scale-105 hover:bg-brand-accent1 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {state.submitting ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             )}
