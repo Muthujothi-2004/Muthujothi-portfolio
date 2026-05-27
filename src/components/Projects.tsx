@@ -14,7 +14,7 @@ const projects: ProjectItem[] = [
     name: 'Rhythmix',
     desc: "Developed during training at Freshworks Software Academy. A feature-rich music app with a Mood Swing feature that curates playlists based on the user's current mood. Built for seamless audio playback.",
     image: '/images/project1.png',
-    link: 'https://rhythmix-music.netlify.app',
+    link: 'https://rhythmix-psi.vercel.app',
     metric: 'React / HTML5 Audio',
   },
   {
@@ -22,7 +22,7 @@ const projects: ProjectItem[] = [
     name: 'Trackify',
     desc: 'Developed during training at Freshworks Software Academy. A React.js-based expense tracker that lets users add, categorize, and monitor personal finances with real-time calculated dashboards.',
     image: '/images/project2.png',
-    link: 'https://github.com/Muthujothi-2004/Expense_Tracker',
+    link: 'https://trackify-pi-jade.vercel.app/',
     metric: 'React State Hooks',
   },
   {

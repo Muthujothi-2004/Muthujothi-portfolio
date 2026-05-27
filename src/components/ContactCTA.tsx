@@ -93,29 +93,13 @@ export default function ContactCTA() {
             </p>
 
             {state.succeeded ? (
-              <div className="flex flex-col items-center justify-center py-12 text-center">
-                {/* Glowing checkmark ring */}
-                <div className="relative mb-6 animate-[scaleIn_0.5s_cubic-bezier(0.16,1,0.3,1)_forwards]">
-                  {/* Outer pulsing ring */}
-                  <div className="absolute inset-[-8px] rounded-full bg-brand-accent1/10 animate-ping opacity-75" />
-                  
-                  {/* Inner gradient circle */}
-                  <div className="w-[64px] h-[64px] rounded-full bg-gradient-to-tr from-brand-accent1 to-brand-accent2 text-white flex items-center justify-center shadow-[0_8px_25px_rgba(168,85,247,0.3)]">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="w-8 h-8">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                  </div>
+              <div className="flex flex-col items-center justify-center py-10 text-center">
+                <div className="w-[50px] h-[50px] rounded-full bg-[#22c55e] text-white text-3xl font-bold flex items-center justify-center mb-5 shadow-[0_4px_15px_rgba(34,197,94,0.2)]">
+                  ✓
                 </div>
-                
-                {/* Success messages */}
-                <div className="flex flex-col gap-2.5 animate-[slideUp_0.6s_cubic-bezier(0.16,1,0.3,1)_forwards]">
-                  <h4 className="font-head text-[1.4rem] font-extrabold text-brand-dark tracking-tight">
-                    Message Sent Successfully!
-                  </h4>
-                  <p className="font-body text-[0.92rem] text-gray-500 max-w-[320px] mx-auto leading-relaxed">
-                    Thank you for reaching out! I will review your message and get back to you shortly.
-                  </p>
-                </div>
+                <p className="font-head text-[1.2rem] font-bold text-brand-dark">
+                  Thank you! Your message has been sent.
+                </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-5">
