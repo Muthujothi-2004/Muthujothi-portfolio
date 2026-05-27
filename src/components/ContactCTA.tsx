@@ -27,13 +27,16 @@ export default function ContactCTA() {
 
   // Automatically close modal and reset form after successful submission
   useEffect(() => {
+    let timer: number | undefined
     if (state.succeeded) {
-      const timer = setTimeout(() => {
+      timer = window.setTimeout(() => {
         setFormData({ name: '', email: '', message: '' })
         setModalOpen(false)
         reset()
       }, 3000)
-      return () => clearTimeout(timer)
+    }
+    return () => {
+      if (timer) clearTimeout(timer)
     }
   }, [state.succeeded, reset])
 
