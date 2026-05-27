@@ -14,7 +14,7 @@ const projects: ProjectItem[] = [
     name: 'Rhythmix',
     desc: "Developed during training at Freshworks Software Academy. A feature-rich music app with a Mood Swing feature that curates playlists based on the user's current mood. Built for seamless audio playback.",
     image: '/images/project1.png',
-    link: 'https://rhythmix-psi.vercel.app',
+    link: 'rhythmix-psi.vercel.app',
     metric: 'React / HTML5 Audio',
   },
   {
