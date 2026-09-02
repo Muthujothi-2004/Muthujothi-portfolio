@@ -25,14 +25,14 @@ const projects: ProjectItem[] = [
     link: 'https://trackify-pi-jade.vercel.app/',
     metric: 'React State Hooks',
   },
-  {
-    category: 'PERSONAL WEBSITE',
-    name: 'Muthujothi Portfolio',
-    desc: 'Developed during training at Freshworks Software Academy. A personal portfolio website showcasing projects, skills, and professional background. Designed for clean layouts and fast performance.',
-    image: '/images/project3.png',
-    link: 'https://muthujothi2004.github.io',
-    metric: 'Tailwind CSS / Vite',
-  },
+  // {
+  //   category: 'PERSONAL WEBSITE',
+  //   name: 'Muthujothi Portfolio',
+  //   desc: 'Developed during training at Freshworks Software Academy. A personal portfolio website showcasing projects, skills, and professional background. Designed for clean layouts and fast performance.',
+  //   image: '/images/project3.png',
+  //   link: 'https://muthujothi2004.github.io',
+  //   metric: 'Tailwind CSS / Vite',
+  // },
 ]
 
 export default function Projects() {
