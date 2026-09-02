@@ -23,7 +23,7 @@ const experienceData: ExperienceItem[] = [
   {
     role: 'Software Development Engineer',
     company: 'Shabd Company',
-    period: 'Feb 2025 – Apr 2025',
+    period: 'Feb 2026 – Apr 2026',
     type: 'Full-time',
     bullets: [
       'Developed and maintained frontend modules using Next.js and TypeScript in a production environment.',
@@ -35,7 +35,7 @@ const experienceData: ExperienceItem[] = [
   {
     role: 'Web Developer Intern',
     company: 'Shabd Company',
-    period: 'May 2024 – Jan 2025',
+    period: 'May 2025 – Jan 2026',
     type: 'Internship',
     bullets: [
       'Built responsive web application interfaces using Next.js, TypeScript, React.js',
